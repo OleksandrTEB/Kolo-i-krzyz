@@ -24,6 +24,7 @@ body{
     font-weight: bolder;
     border-radius: 10px;
     background-color: rgb(193, 219, 147);
+    box-shadow: 3px 3px 10px rgb(102, 95, 95);
 }
 .line {
     width: 314px;
@@ -41,6 +42,7 @@ body{
     width: 100px;
     height: 50px;
     font-size: 150%;
+    box-shadow: 5px 5px 15px rgb(102, 95, 95);
 
 }
 #resetBtn:hover{
