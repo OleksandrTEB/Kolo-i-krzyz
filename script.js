@@ -1,8 +1,9 @@
+alert("Autor: Oleksandr Shvab")
 const board = document.querySelector("#board");
 let currentPlayer = "X";
 
-let p1 = prompt("Pierwszy gracz (X)","")
-let p2 = prompt("Drugi gracz (O)","")
+let p1 = prompt("Pierwszy gracz (X)","X")
+let p2 = prompt("Drugi gracz (O)","O")
 
 
 let gameBoard = ["","","","","","","","",""];
@@ -19,7 +20,7 @@ function createBoard() {
     }
 }
 function handleCellClick(event) {
-        event.target.classList.add('x-player'); // Dodajemy klasę dla "X"
+        event.target.classList.add('x-player');
 
     const messageTur = document.querySelector("#message");
     console.log('Cell clicked:', event.target.dataset.index);
