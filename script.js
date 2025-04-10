@@ -1,32 +1,42 @@
+// Wyświetla komunikat
 alert("Autor: Oleksandr Shvab")
+
+// Pobiera element div z id board
 const board = document.querySelector("#board");
+
+// Tworzenie stałej currentPlayer z zawartością X
 let currentPlayer = "X";
 
+// Pobieranie danych od użytkownika
 let p1 = prompt("Pierwszy gracz (X)","X")
 let p2 = prompt("Drugi gracz (O)","O")
 
-
+// Tworzenie tablicy z 9 pustymi objaktami
 let gameBoard = ["","","","","","","","",""];
+
 let winningCombo = [0,0,0];
 
-
-function createBoard() {    
+// Tworzenie Skieletu gry
+function createBoard() {
     for(let i = 0; i < 9; i++){
         const cell = document.createElement('div');
-        cell.classList.add('cell');
+        cell.classList.add('cell'); //Dodanie klasy dla cell
         cell.dataset.index = i;
         cell.addEventListener('click', handleCellClick);
         board.appendChild(cell);
     }
 }
 function handleCellClick(event) {
+    // dodaje klasę dla X
         event.target.classList.add('x-player');
 
-    const messageTur = document.querySelector("#message");
+    const messageTur = document.querySelector("#message");// Pobieranie id message dla dalszego wyświetlania wiadomości
     console.log('Cell clicked:', event.target.dataset.index);
     event.target.textContent = currentPlayer;
     gameBoard[event.target.dataset.index] = currentPlayer;
-    console.log(checkWin());
+    console.log(checkWin()/* wyłowanie funkcji chakWin*/);
+
+    // Sprawdzenie kko wygrał
     if(checkWin()) {
         messageTur.textContent= `${currentPlayer} wygrał!`;
         console.log(`${currentPlayer} wygrał!`);
@@ -34,11 +44,11 @@ function handleCellClick(event) {
     } else {
     if(currentPlayer === "X") {
         currentPlayer = "O";
-        messageTur.textContent = `Tura: ${p2}`
+        messageTur.textContent = `Tura: ${p2}`//wyświetlanie imiena gracza O
     }
     else {
         currentPlayer = "X";
-        messageTur.textContent = `Tura: ${p1}`
+        messageTur.textContent = `Tura: ${p1}`//wyświetlanie imiena gracza X
         }
         event.target.removeEventListener("click", handleCellClick);
     }
@@ -48,8 +58,10 @@ createBoard();
 
 // [0,4,8]
 
+//Funkcja chekWin
 function checkWin() {
     const winConditions = [
+        //Wariacji wygrania
         [0,1,2],
         [3,4,5],
         [6,7,8],
@@ -60,7 +72,7 @@ function checkWin() {
         [2,4,6],
     ];
 
-
+    //Pętla
     for (const condition of winConditions){
         const [a,b,c] = condition;
         if (
@@ -76,18 +88,19 @@ function checkWin() {
     return false;
 }
 
-
 const resetBtn = document.querySelector("#resetBtn");
-resetBtn.addEventListener("click", resetGame);
+resetBtn.addEventListener("click", resetGame);//Dodanie nasluchwacia zdarzeń
+
+//Funkcja resetowania gry
 function resetGame() {
-    gameBoard = ["","","","","","","","",""];
+    gameBoard = ["","","","","","","","",""];//Wyczyszczenie gry
     currentPlayer = "X";
     const cells = document.querySelectorAll(".cell");
-    cells.forEach((cell) => {
+    cells.forEach((cell) => {// Pętla forEach()
         cell.textContent = "";
         cell.addEventListener("click", handleCellClick)
 
-        const jestLine = document.querySelector(".line");
+        const jestLine = document.querySelector(".line");//Usunięcie linij
         if (jestLine) {
             jestLine.remove();
         }
@@ -96,8 +109,10 @@ function resetGame() {
     
     
 }
-resetGame();
 
+resetGame();//Wyłowanie funkcji resetGame()
+
+//Funkcja tworzenia linij
 function drawWinningLine() {
     const line = document.createElement("div");
     line.classList.add("line");
@@ -109,6 +124,8 @@ function drawWinningLine() {
     console.log(winningCombo[0], winningCombo[1], winningCombo[2]);
     console.log(winningCombo);
 
+    //Stylizowanie lnij
+    //Pionowe linii
     if (start === 0 && end === 2) {
         line.style.top = "50px";
         line.style.left = "0";
@@ -118,6 +135,8 @@ function drawWinningLine() {
     } else if (start === 6 && end === 8) {
         line.style.top = "260px";
         line.style.left = "0";
+
+        //Pożiomowe linie
     } else if (start === 0 && end === 6) {
         line.style.width = "322px";
         line.style.top = "0";
@@ -133,11 +152,13 @@ function drawWinningLine() {
         line.style.top = "0";
         line.style.left = "265px";
         line.style.transform = "rotate(90deg)";
+
+        //Linie na skos
     } else if (start === 0 && end === 8) {
         line.style.width = "444px";
         line.style.top = "0";
         line.style.left = "3px";
-        line.style.transform = "rotate(45.7deg)";
+        line.style.transform = "rotate(45.5deg)";
     } else if (start === 2 && end === 6) {
         line.style.width = "444px";
         line.style.top = "318px";
