@@ -88,8 +88,9 @@ function checkWin() {
     return false;
 }
 
+
 const resetBtn = document.querySelector("#resetBtn");
-resetBtn.addEventListener("click", resetGame);//Dodanie nasluchwacia zdarzeń
+resetBtn.addEventListener("click", resetGame);//Dodanie nasłuchiwaczia zdarzeń
 
 //Funkcja resetowania gry
 function resetGame() {
@@ -127,42 +128,42 @@ function drawWinningLine() {
     //Stylizowanie lnij
     //Pionowe linii
     if (start === 0 && end === 2) {
-        line.style.top = "50px";
+        line.style.top = "46px";
         line.style.left = "0";
     } else if (start === 3 && end === 5) {
-        line.style.top = "155px";
+        line.style.top = "151px";
         line.style.left = "0";
     } else if (start === 6 && end === 8) {
-        line.style.top = "260px";
+        line.style.top = "256px";
         line.style.left = "0";
 
         //Pożiomowe linie
     } else if (start === 0 && end === 6) {
-        line.style.width = "322px";
+        line.style.width = "310px";
         line.style.top = "0";
-        line.style.left = "55px";
+        line.style.left = "53px";
         line.style.transform = "rotate(90deg)";
     } else if (start === 1 && end === 7) {
-        line.style.width = "322px";
+        line.style.width = "310px";
         line.style.top = "0";
-        line.style.left = "160px";
+        line.style.left = "158px";
         line.style.transform = "rotate(90deg)";
     } else if (start === 2 && end === 8) {
-        line.style.width = "322px";
+        line.style.width = "310px";
         line.style.top = "0";
-        line.style.left = "265px";
+        line.style.left = "263px";
         line.style.transform = "rotate(90deg)";
 
         //Linie na skos
     } else if (start === 0 && end === 8) {
-        line.style.width = "444px";
+        line.style.width = "433px";
         line.style.top = "0";
         line.style.left = "3px";
-        line.style.transform = "rotate(45.5deg)";
+        line.style.transform = "rotate(45deg)";
     } else if (start === 2 && end === 6) {
-        line.style.width = "444px";
-        line.style.top = "318px";
-        line.style.left = "0";
-        line.style.transform = "rotate(-45.5deg)";
+        line.style.width = "433px";
+        line.style.top = "308px";
+        line.style.left = "0px";
+        line.style.transform = "rotate(-45deg)";
     }
 }
