@@ -1,12 +1,17 @@
+/* '*' bierze wszystkie elementy na stronies */
 *{
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(217, 233, 189);
-
 }
+
+/* Przesunięcie wszystkiego w prawo */
 body{
     position: relative;
     left: 700px;
+    user-select: none;
 }
+
+
 .board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
@@ -47,6 +52,7 @@ body{
 }
 #resetBtn:hover{
     background-color: rgb(15, 114, 48);
+    cursor: pointer;
 }
 #resetBtn:active{
     background-color: rgb(75, 163, 48);
@@ -57,4 +63,3 @@ body{
 .x-player{
     color: rgb(71, 80, 128);
 }
-
